@@ -16,7 +16,7 @@ let currentModalIndex;
 
 // GLOBAL CONSTANTS
 const ENTRIES_MAX_INDEX = 11
-const NO_MATCHES = `<h3> No matching records - Please search again </h3>`
+const NO_MATCHES = `<h4> No matching records - Please search again </h4>`
 
 // FETCH METHODS
 async function getUsers () {
@@ -63,6 +63,7 @@ function directoryGenerator (userRecords) {
 function generateModalWindow (username) {
     let modalRecord = searchDirectory(username)
     console.log(modalRecord)
+    console.log(modalRecord.cell)
 
     //Format the Birthday Info
     let userDOBArray = modalRecord.dob.date.split("T")[0].split("-")
@@ -74,8 +75,9 @@ function generateModalWindow (username) {
         <p class="modal-text">${modalRecord.email}</p>
         <p class="modal-text cap">${modalRecord.location.city}</p>
         <hr>
-        <p class="modal-text"${modalRecord.phone}</p>
-        <p class="modal-text">${modalRecord.location.street.number} ${modalRecord.location.street.name}, ${modalRecord.location.city}, ${modalRecord.location.state} ${modalRecord.location.postcode}</p>
+        <p class="modal-text">${modalRecord.cell}</p>
+        <p class="modal-text">${modalRecord.location.street.number} ${modalRecord.location.street.name}</p>
+        <p class="modal-text">${modalRecord.location.state} ${modalRecord.location.postcode}</p>
         <p class="modal-text">Birthday: ${userDOBDate}</p>
     `
 
